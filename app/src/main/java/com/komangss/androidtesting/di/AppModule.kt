@@ -2,10 +2,13 @@ package com.komangss.androidtesting.di
 
 import android.content.Context
 import androidx.room.Room
+import com.komangss.androidtesting.data.local.ShoppingDao
 import com.komangss.androidtesting.data.local.ShoppingItemDatabase
 import com.komangss.androidtesting.data.remote.PixabayAPI
 import com.komangss.androidtesting.other.Constants.BASE_URL
 import com.komangss.androidtesting.other.Constants.DATABASE_NAME
+import com.komangss.androidtesting.repositories.DefaultShoppingRepository
+import com.komangss.androidtesting.repositories.ShoppingRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +26,13 @@ object AppModule {
     fun provideShoppingItemDatabase(
         @ApplicationContext context : Context
     ) = Room.databaseBuilder(context, ShoppingItemDatabase::class.java, DATABASE_NAME).build()
+
+    @Singleton
+    @Provides
+    fun provideDefaultRepository(
+        dao : ShoppingDao,
+        api : PixabayAPI
+    ) = DefaultShoppingRepository(dao, api) as ShoppingRepository
 
     @Singleton
     @Provides

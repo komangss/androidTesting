@@ -1,7 +1,8 @@
-package com.komangss.androidtesting
+package com.komangss.androidtesting.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.komangss.androidtesting.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
