@@ -6,6 +6,8 @@ import com.komangss.androidtesting.data.local.ShoppingItem
 import com.komangss.androidtesting.data.remote.responses.ImageResponse
 import com.komangss.androidtesting.other.Resource
 
+// Using fake repository that imitate the real repository is really efficient for test,
+// because this just use plain list of data structure and not real database
 class FakeShoppingRepository : ShoppingRepository {
     private val shoppingItems = mutableListOf<ShoppingItem>()
 
